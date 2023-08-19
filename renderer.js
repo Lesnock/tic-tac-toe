@@ -54,3 +54,19 @@ export function drawCircle(squareNumber) {
   ctx.arc(x, y, 35, 0, 2 * Math.PI)
   ctx.stroke()
 }
+
+export function drawWinLine(squareNumbers) {
+  const [row1, column1] = getSquareRowColumn(squareNumbers[0])
+  const [row2, column2] = getSquareRowColumn(squareNumbers[2])
+  ctx.lineWidth = 10
+  ctx.strokeStyle = '#000000'
+  ctx.beginPath()
+  ctx.moveTo((column1 + 1) * squareSize - squareSize / 2, (row1 + 1) * squareSize - squareSize / 2) // Center of first square
+  ctx.lineTo((column2 + 1) * squareSize - squareSize / 2, (row2 + 1) * squareSize - squareSize / 2) // Center of last square
+  ctx.stroke()
+}
+
+export function reset() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  drawLines()
+}
